@@ -1,3 +1,8 @@
+/*
+  Write a method to replace all spaces in a string with ‘%20’. 
+*/
+
+
 #include <stdio.h>
 #include <string.h>
 

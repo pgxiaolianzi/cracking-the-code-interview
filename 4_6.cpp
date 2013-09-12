@@ -1,3 +1,10 @@
+/*
+	Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree. 
+	Avoid storing additional nodes in a data structure. 
+	NOTE: This is not necessarily a binary search tree. 
+*/
+
+
 #include <stdio.h>
 #include <vector>
 
@@ -80,14 +87,11 @@ void printTree(BinaryTreeNode *root, int tab, char c)
 	}
 }
 
-bool found = false;
-BinaryTreeNode *p;
-BinaryTreeNode *q;
+
 BinaryTreeNode *f1, *f2;
-BinaryTreeNode *ancestor;
 void nearestFather(BinaryTreeNode *root, BinaryTreeNode *father)
 {
-	if(root && !found)
+	if(root && f1 != f2)
 	{
 		nearestFather(root->left, root);
 		nearestFather(root->right, root);
@@ -95,11 +99,6 @@ void nearestFather(BinaryTreeNode *root, BinaryTreeNode *father)
 			f1 = father;
 		else if(root == f2)
 			f2 = father;
-		if(f1 == f2)
-		{
-			ancestor = f1;
-			found = true;
-		}	
 	}
 }
 
@@ -126,18 +125,25 @@ void destoyTree(BinaryTreeNode *root)
 }
 
 
-
 int main()
 {
 	int a[] = {3, 1, 2, 0, 4, 6, 8, 5, 7};
 	BinaryTreeNode *root = createOrderTree(a, 9);
 	printTree(root, 0, '\0');
+
 	BinaryTreeNode *p  = search(root, 6);
 	BinaryTreeNode *q  = search(root, 4);
+
 	f1 = p;
 	f2 = q;
 	nearestFather(root, 0);
-	printf("ancestor: %d\n", ancestor->value);
+	printf("ancestor: %d\n", f1->value);
+
+	// f1 = p;
+	// f2 = q;
+	// tarjan(root);
+	// printf("ancestor: %d\n", f1->value);
+
 	destoyTree(root);
 	return 0;
 }

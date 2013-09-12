@@ -1,3 +1,9 @@
+/*
+  Write a method to decide if two strings are anagrams or not. 
+*/
+
+
+
 #include <stdio.h>
 #include <string.h>
 

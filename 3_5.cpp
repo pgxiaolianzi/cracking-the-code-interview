@@ -1,3 +1,8 @@
+/*
+	Implement a MyQueue class which implements a queue using two stacks. 
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <map>
